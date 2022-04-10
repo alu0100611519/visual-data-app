@@ -15,10 +15,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(preferredSize: Size(double.infinity, 100),
+      appBar: const PreferredSize(preferredSize: Size(double.infinity, 100),
         child: AppBarWidget(key: Key("Home center panel"))
       ),
-      body: PanelCenterHome(key: Key("Home center panel")),
+      body: const PanelCenterHome(key: Key("Home center panel")),
       drawer: DrawerHome(key: const Key("home Drawer"),),
     );
   }

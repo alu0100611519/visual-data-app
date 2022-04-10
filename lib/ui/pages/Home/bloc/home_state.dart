@@ -1,37 +1,45 @@
 import 'package:equatable/equatable.dart';
-
+import 'package:visual_data_app/domain/entities/presentation.dart';
 
 abstract class HomeState extends Equatable {
-  const HomeState();
+  final List<Presentation> listPresentation;
+  const HomeState(this.listPresentation);
 
   @override
   List<Object> get props => [];
 }
 
-/// UnInitialized
-class UnHomeState extends HomeState {
+class InitPresentationState extends HomeState {
+  InitPresentationState() : super([]);
 
-  UnHomeState();
+  @override
+  String toString() => 'Init State';
+}
+
+/// UnInitialized
+class LoadingPresentationState extends HomeState {
+
+  LoadingPresentationState() : super([]);
 
   @override
   String toString() => 'UnHomeState';
 }
 
 /// Initialized
-class InHomeState extends HomeState {
-  InHomeState(this.hello);
+class LoadedPresentationState extends HomeState {
 
-  final String hello;
-
-  @override
-  String toString() => 'InHomeState $hello';
+  const LoadedPresentationState(list) : super(list);
 
   @override
-  List<Object> get props => [hello];
+  String toString() => 'InHomeState ';
+
+  @override
+  List<Object> get props => [listPresentation];
 }
 
 class ErrorHomeState extends HomeState {
-  ErrorHomeState(this.errorMessage);
+
+  ErrorHomeState(this.errorMessage) : super([]);
 
   final String errorMessage;
 
@@ -41,3 +49,4 @@ class ErrorHomeState extends HomeState {
   @override
   List<Object> get props => [errorMessage];
 }
+

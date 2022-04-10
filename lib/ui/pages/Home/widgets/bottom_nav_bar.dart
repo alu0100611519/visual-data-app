@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visual_data_app/ui/pages/Home/bloc/home_bloc.dart';
+import 'package:visual_data_app/ui/pages/Home/bloc/home_event.dart';
 
 import '../../constant.dart';
+import '../bloc/home_state.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({required Key key}) : super(key: key);
@@ -22,55 +26,60 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const shadowColor = Colors.grey; //color of Navbar shadow
     double elevation = 100; //Elevation of the bottom Navbar
 
-    return BottomAppBar(
-      color: Colors.transparent,
-      elevation: 10,
-      child: Stack(
-        children: [
-          CustomPaint(
-            size: Size(size.width, height),
-            painter: BottomNavCurvePainter(backgroundColor: backgroundColor, shadowColor: shadowColor, elevation: elevation),
-          ),
-          Center(
-            heightFactor: 0.8,
-            child: FloatingActionButton(
-                backgroundColor: primaryColor,
-                child: const Icon(Icons.add),
-                elevation: 10,
-                onPressed: () {
-                  print("ESTO ES EL BOTON CHART");
-                }),
-          ),
-          SizedBox(
-            height: height,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                NavBarIcon(
-                  key: const Key("Search Icon"),
-                  text: "Search",
-                  icon: Icons.search_outlined,
-                  selected: false,
-                  onPressed: () {},
-                  defaultColor: secondaryColor,
-                  selectedColor: primaryColor,
-                ),
-                const SizedBox(width: 56),
-                NavBarIcon(
-                    key: const Key("favourite Icon"),
-                    text: "favourite",
-                    icon: Icons.favorite_border,
-                    selected: false,
+    return BlocBuilder<HomeBloc,HomeState>(
+      builder: (context,state) {
+        return BottomAppBar(
+          color: Colors.transparent,
+          elevation: 10,
+          child: Stack(
+            children: [
+              CustomPaint(
+                size: Size(size.width, height),
+                painter: BottomNavCurvePainter(backgroundColor: backgroundColor, shadowColor: shadowColor, elevation: elevation),
+              ),
+              Center(
+                heightFactor: 0.8,
+                child: FloatingActionButton(
+                    backgroundColor: primaryColor,
+                    child: const Icon(Icons.add),
+                    elevation: 10,
                     onPressed: () {
+                      print("estoy en el boton add.");
+                      context.read<HomeBloc>().add(LoadHomeEvent());
+                    }),
+              ),
+              SizedBox(
+                height: height,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    NavBarIcon(
+                      key: const Key("Search Icon"),
+                      text: "Search",
+                      icon: Icons.search_outlined,
+                      selected: false,
+                      onPressed: () {},
+                      defaultColor: secondaryColor,
+                      selectedColor: primaryColor,
+                    ),
+                    const SizedBox(width: 56),
+                    NavBarIcon(
+                        key: const Key("favourite Icon"),
+                        text: "favourite",
+                        icon: Icons.favorite_border,
+                        selected: false,
+                        onPressed: () {
 
-                    },
-                    defaultColor: secondaryColor,
-                    selectedColor: primaryColor),
-              ],
-            ),
+                        },
+                        defaultColor: secondaryColor,
+                        selectedColor: primaryColor),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      }
     );
   }
 }

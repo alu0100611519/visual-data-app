@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visual_data_app/ui/pages/Home/bloc/home_bloc.dart';
+import 'package:visual_data_app/ui/pages/Home/bloc/home_state.dart';
 import 'package:visual_data_app/ui/pages/Home/home_page.dart';
 import 'package:visual_data_app/ui/pages/constant.dart';
 
@@ -21,7 +24,10 @@ class MyApp extends StatelessWidget{
         scaffoldBackgroundColor: Colors.white,
         canvasColor: Constants.blueDark
       ),
-      home:const HomePage(),
+      home: BlocProvider<HomeBloc>(
+        create: ((context) => HomeBloc(InitPresentationState())),
+        child: const HomePage(),
+      ) ,
     );
   }
 
