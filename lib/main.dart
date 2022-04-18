@@ -1,35 +1,39 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:visual_data_app/ui/pages/Home/bloc/home_bloc.dart';
-import 'package:visual_data_app/ui/pages/Home/bloc/home_state.dart';
-import 'package:visual_data_app/ui/pages/Home/home_page.dart';
-import 'package:visual_data_app/ui/pages/constant.dart';
 
-void main() async {
- //WidgetsFlutterBinding.ensureInitialized();
- // await initializeDI();
-  runApp(new MyApp());
-}
+import 'home.dart';
+import 'interval.dart';
+import 'line_area_point.dart';
+import 'polygon_custom.dart';
+import 'interaction_channel_dynamic.dart';
+import 'bigdata.dart';
+import 'echarts.dart';
+// import 'pages/debug.dart';
 
-class MyApp extends StatelessWidget{
-  //this widget is the root of the aplication.
+final routes = {
+  '/': (context) => const HomePage(),
+  '/examples/Interval Element': (context) => IntervalPage(),
+  '/examples/Line,Area,Point Element': (context) => LineAreaPointPage(),
+  '/examples/Polygon,Custom Element': (context) => PolygonCustomPage(),
+  '/examples/Interaction Channel, Dynamic': (context) =>
+      const InteractionChannelDynamicPage(),
+  '/examples/Bigdata': (context) => BigdataPage(),
+  '/examples/Echarts': (context) => EchartsPage(),
+  // '/examples/Debug': (context) => DebugPage(),
+};
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Visual Data App',
       theme: ThemeData(
-        backgroundColor: Colors.white,
-        primarySwatch: Colors.blueGrey,
-        scaffoldBackgroundColor: Colors.white,
-        canvasColor: Constants.blueDark
+        primarySwatch: Colors.blue,
       ),
-      home: BlocProvider<HomeBloc>(
-        create: ((context) => HomeBloc(InitPresentationState())),
-        child: const HomePage(),
-      ) ,
+      routes: routes,
+      initialRoute: '/',
     );
   }
-
-
 }
+
+void main() => runApp(const MyApp());

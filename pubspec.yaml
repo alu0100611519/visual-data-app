@@ -38,6 +38,10 @@ dependencies:
   bloc: ^8.0.3
   equatable: ^2.0.3
   google_fonts: ^2.2.0
+  graphic: ^0.9.2
+  intl: ^0.17.0
+  quiver: ^3.0.1+1
+
 
 dev_dependencies:
   flutter_test:
