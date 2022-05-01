@@ -7,6 +7,7 @@ import 'polygon_custom.dart';
 import 'interaction_channel_dynamic.dart';
 import 'bigdata.dart';
 import 'echarts.dart';
+import 'ui/pages/ListPresentation/List_presentation_page.dart';
 // import 'pages/debug.dart';
 
 final routes = {
@@ -30,8 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      routes: routes,
-      initialRoute: '/',
+      home: const ListPresentationPage(),
     );
   }
 }
