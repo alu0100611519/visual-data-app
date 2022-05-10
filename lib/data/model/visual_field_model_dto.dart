@@ -2,8 +2,6 @@
 import 'package:objectbox/objectbox.dart';
 import 'package:visual_data_app/data/model/visual_model_dto.dart';
 
-
-
 import 'visual_row_model_dto.dart';
 
 /// Clase visual que representa las cabeceras de la base del conocimiento.
