@@ -1,0 +1,96 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:5321988053989769155",
+      "lastPropertyId": "2:3361507230653348119",
+      "name": "VisualModelDTO",
+      "properties": [
+        {
+          "id": "1:2559122248202570471",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3361507230653348119",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:1484534787538846826",
+      "lastPropertyId": "3:8902032290903877431",
+      "name": "VisualFieldModelDTO",
+      "properties": [
+        {
+          "id": "1:8472471573040869400",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2970682281116767961",
+          "name": "field",
+          "type": 9
+        },
+        {
+          "id": "3:8902032290903877431",
+          "name": "vmId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:55289577629771933",
+          "relationTarget": "VisualModelDTO"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7215389886977720942",
+      "lastPropertyId": "4:9014583285663182407",
+      "name": "VisualRowModelDTO",
+      "properties": [
+        {
+          "id": "1:2168445789377880442",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6110551577873223920",
+          "name": "position",
+          "type": 6
+        },
+        {
+          "id": "3:3113842489720527000",
+          "name": "fieldId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:4020722349384410135",
+          "relationTarget": "VisualFieldModelDTO"
+        },
+        {
+          "id": "4:9014583285663182407",
+          "name": "value",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:7215389886977720942",
+  "lastIndexId": "2:4020722349384410135",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

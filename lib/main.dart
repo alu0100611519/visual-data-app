@@ -1,15 +1,12 @@
+//import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:visual_data_app/cacharros/home_page.dart';
 
-import 'home.dart';
-import 'interval.dart';
-import 'line_area_point.dart';
-import 'polygon_custom.dart';
-import 'interaction_channel_dynamic.dart';
-import 'bigdata.dart';
-import 'echarts.dart';
-import 'ui/pages/ListPresentation/List_presentation_page.dart';
+//import 'ui/pages/ListPresentation/List_presentation_page.dart';
 // import 'pages/debug.dart';
 
+/*
 final routes = {
   '/': (context) => const HomePage(),
   '/examples/Interval Element': (context) => IntervalPage(),
@@ -20,7 +17,9 @@ final routes = {
   '/examples/Bigdata': (context) => BigdataPage(),
   '/examples/Echarts': (context) => EchartsPage(),
   // '/examples/Debug': (context) => DebugPage(),
-};
+};*/
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ListPresentationPage(),
+      home:  HomePage(),
     );
   }
 }
