@@ -2,8 +2,9 @@
 
 
 import 'package:objectbox/objectbox.dart';
+import 'package:visual_data_app/data/entities/visual_model_dto.dart';
 
-import 'package:visual_data_app/data/model/visual_model_dto.dart';
+
 
 import '../dao/visual_model_dao.dart';
 import 'local.dart';
@@ -31,10 +32,7 @@ class ObjectBoxLocal extends Local {
 
   @override
   Future<List<VisualModelDTO>> getModels() async {
-
-    final box = _store.box<VisualModelDTO>();
-    List<VisualModelDTO> result = box.getAll();
-    return result;
+    return _visualModelDao.getModels();
   }
 
 }

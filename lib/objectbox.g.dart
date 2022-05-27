@@ -13,9 +13,9 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'data/model/visual_field_model_dto.dart';
-import 'data/model/visual_model_dto.dart';
-import 'data/model/visual_row_model_dto.dart';
+import 'data/entities/visual_field_model_dto.dart';
+import 'data/entities/visual_model_dto.dart';
+import 'data/entities/visual_row_model_dto.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -23,7 +23,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 5321988053989769155),
       name: 'VisualModelDTO',
-      lastPropertyId: const IdUid(2, 3361507230653348119),
+      lastPropertyId: const IdUid(3, 1612216773946605970),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -35,6 +35,11 @@ final _entities = <ModelEntity>[
             id: const IdUid(2, 3361507230653348119),
             name: 'name',
             type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 1612216773946605970),
+            name: 'description',
+            type: 9,
             flags: 0)
       ],
       relations: <ModelRelation>[],
@@ -45,7 +50,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(2, 1484534787538846826),
       name: 'VisualFieldModelDTO',
-      lastPropertyId: const IdUid(3, 8902032290903877431),
+      lastPropertyId: const IdUid(4, 1398872599880322678),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -54,22 +59,22 @@ final _entities = <ModelEntity>[
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 2970682281116767961),
-            name: 'field',
-            type: 9,
-            flags: 0),
-        ModelProperty(
             id: const IdUid(3, 8902032290903877431),
             name: 'vmId',
             type: 11,
             flags: 520,
             indexId: const IdUid(1, 55289577629771933),
-            relationTarget: 'VisualModelDTO')
+            relationTarget: 'VisualModelDTO'),
+        ModelProperty(
+            id: const IdUid(4, 1398872599880322678),
+            name: 'namefield',
+            type: 9,
+            flags: 0)
       ],
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[
         ModelBacklink(
-            name: 'row', srcEntity: 'VisualRowModelDTO', srcField: 'field')
+            name: 'rows', srcEntity: 'VisualRowModelDTO', srcField: 'field')
       ]),
   ModelEntity(
       id: const IdUid(3, 7215389886977720942),
@@ -130,7 +135,7 @@ ModelDefinition getObjectBoxModel() {
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [2970682281116767961],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
@@ -151,9 +156,11 @@ ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (VisualModelDTO object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
-          fbb.startTable(3);
+          final descriptionOffset = fbb.writeString(object.description);
+          fbb.startTable(4);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, nameOffset);
+          fbb.addOffset(2, descriptionOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -164,7 +171,9 @@ ModelDefinition getObjectBoxModel() {
           final object = VisualModelDTO(
               id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
               name: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 6, ''));
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              description: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''));
           InternalToManyAccess.setRelInfo(
               object.fields,
               store,
@@ -178,18 +187,18 @@ ModelDefinition getObjectBoxModel() {
         toOneRelations: (VisualFieldModelDTO object) => [object.vm],
         toManyRelations: (VisualFieldModelDTO object) => {
               RelInfo<VisualRowModelDTO>.toOneBacklink(3, object.id,
-                  (VisualRowModelDTO srcObject) => srcObject.field): object.row
+                  (VisualRowModelDTO srcObject) => srcObject.field): object.rows
             },
         getId: (VisualFieldModelDTO object) => object.id,
         setId: (VisualFieldModelDTO object, int id) {
           object.id = id;
         },
         objectToFB: (VisualFieldModelDTO object, fb.Builder fbb) {
-          final fieldOffset = fbb.writeString(object.field);
-          fbb.startTable(4);
+          final namefieldOffset = fbb.writeString(object.namefield);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
-          fbb.addOffset(1, fieldOffset);
           fbb.addInt64(2, object.vm.targetId);
+          fbb.addOffset(3, namefieldOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -199,13 +208,13 @@ ModelDefinition getObjectBoxModel() {
 
           final object = VisualFieldModelDTO(
               id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
-              field: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 6, ''));
+              namefield: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 10, ''));
           object.vm.targetId =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
           object.vm.attach(store);
           InternalToManyAccess.setRelInfo(
-              object.row,
+              object.rows,
               store,
               RelInfo<VisualRowModelDTO>.toOneBacklink(3, object.id,
                   (VisualRowModelDTO srcObject) => srcObject.field),
@@ -259,6 +268,10 @@ class VisualModelDTO_ {
   /// see [VisualModelDTO.name]
   static final name =
       QueryStringProperty<VisualModelDTO>(_entities[0].properties[1]);
+
+  /// see [VisualModelDTO.description]
+  static final description =
+      QueryStringProperty<VisualModelDTO>(_entities[0].properties[2]);
 }
 
 /// [VisualFieldModelDTO] entity fields to define ObjectBox queries.
@@ -267,13 +280,13 @@ class VisualFieldModelDTO_ {
   static final id =
       QueryIntegerProperty<VisualFieldModelDTO>(_entities[1].properties[0]);
 
-  /// see [VisualFieldModelDTO.field]
-  static final field =
-      QueryStringProperty<VisualFieldModelDTO>(_entities[1].properties[1]);
-
   /// see [VisualFieldModelDTO.vm]
   static final vm = QueryRelationToOne<VisualFieldModelDTO, VisualModelDTO>(
-      _entities[1].properties[2]);
+      _entities[1].properties[1]);
+
+  /// see [VisualFieldModelDTO.namefield]
+  static final namefield =
+      QueryStringProperty<VisualFieldModelDTO>(_entities[1].properties[2]);
 }
 
 /// [VisualRowModelDTO] entity fields to define ObjectBox queries.

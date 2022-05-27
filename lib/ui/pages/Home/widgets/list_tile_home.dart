@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:visual_data_app/domain/entities/presentation.dart';
+import 'package:visual_data_app/domain/model/visual_model.dart';
 
 import '../../constant.dart';
 
 class ListTileHome extends StatefulWidget {
-  const ListTileHome({required Key key, required Presentation presentation}) : super(key: key);
+  const ListTileHome({required Key key, required VisualModel visualModel}) : super(key: key);
 
   @override
   State<ListTileHome> createState() => _ListTileHomeState();

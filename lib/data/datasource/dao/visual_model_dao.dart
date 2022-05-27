@@ -2,7 +2,7 @@
 
 
 import 'package:objectbox/objectbox.dart';
-import 'package:visual_data_app/data/model/visual_model_dto.dart';
+import 'package:visual_data_app/data/entities/visual_model_dto.dart';
 
 class VisualModelDao{
   final Store _store;

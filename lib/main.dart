@@ -1,7 +1,8 @@
 //import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:visual_data_app/cacharros/home_page.dart';
+
+import 'ui/pages/Home/home_page.dart';
 
 //import 'ui/pages/ListPresentation/List_presentation_page.dart';
 // import 'pages/debug.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  HomePage(),
+      home:  const HomePage(),
     );
   }
 }

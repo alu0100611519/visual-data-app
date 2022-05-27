@@ -2,7 +2,9 @@
 
 
 
-import '../../model/visual_model_dto.dart';
+
+
+import 'package:visual_data_app/data/entities/visual_model_dto.dart';
 
 abstract class Local{
   //obtain full models of the aplication

@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:5321988053989769155",
-      "lastPropertyId": "2:3361507230653348119",
+      "lastPropertyId": "3:1612216773946605970",
       "name": "VisualModelDTO",
       "properties": [
         {
@@ -18,13 +18,18 @@
           "id": "2:3361507230653348119",
           "name": "name",
           "type": 9
+        },
+        {
+          "id": "3:1612216773946605970",
+          "name": "description",
+          "type": 9
         }
       ],
       "relations": []
     },
     {
       "id": "2:1484534787538846826",
-      "lastPropertyId": "3:8902032290903877431",
+      "lastPropertyId": "4:1398872599880322678",
       "name": "VisualFieldModelDTO",
       "properties": [
         {
@@ -34,17 +39,17 @@
           "flags": 1
         },
         {
-          "id": "2:2970682281116767961",
-          "name": "field",
-          "type": 9
-        },
-        {
           "id": "3:8902032290903877431",
           "name": "vmId",
           "type": 11,
           "flags": 520,
           "indexId": "1:55289577629771933",
           "relationTarget": "VisualModelDTO"
+        },
+        {
+          "id": "4:1398872599880322678",
+          "name": "namefield",
+          "type": 9
         }
       ],
       "relations": []
@@ -90,7 +95,9 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    2970682281116767961
+  ],
   "retiredRelationUids": [],
   "version": 1
 }
