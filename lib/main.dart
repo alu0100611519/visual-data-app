@@ -1,7 +1,10 @@
 //import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:visual_data_app/ui/pages/Home/bloc/home_state.dart';
 
+import 'ui/pages/Home/bloc/home_bloc.dart';
 import 'ui/pages/Home/home_page.dart';
 
 //import 'ui/pages/ListPresentation/List_presentation_page.dart';
@@ -31,7 +34,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  const HomePage(),
+      home:  BlocProvider<HomeBloc>(
+        create:  ((context) => HomeBloc(InitVisualModelState())),
+        child: const HomePage(),
+      )
     );
   }
 }

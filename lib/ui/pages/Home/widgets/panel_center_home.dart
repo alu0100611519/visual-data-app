@@ -57,11 +57,11 @@ class _PanelCenterHomeState extends State<PanelCenterHome> {
     return Scaffold(
       body: BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        if (state is InitPresentationState) {
+        if (state is InitVisualModelState) {
           return const Text("ESTA Iniciado.....");
-        }else if (state is LoadingPresentationState){
+        }else if (state is LoadingVisualModelState){
             return const Text("ESTA Cargando.....");
-        } else if (state is LoadedPresentationState) {
+        } else if (state is LoadedVisualModelState) {
           return ListView.builder(
             itemCount: state.listPresentation.length,
             itemBuilder: (context, index) => ListTileHome(
