@@ -4,6 +4,7 @@ import 'package:visual_data_app/domain/model/visual_model.dart';
 import 'package:visual_data_app/ui/pages/Home/bloc/home_bloc.dart';
 import 'package:visual_data_app/ui/pages/Home/widgets/bottom_nav_bar.dart';
 
+import '../bloc/home_event.dart';
 import '../bloc/home_state.dart';
 import 'list_tile_home.dart';
 
@@ -52,12 +53,20 @@ class PanelCenterHome extends StatefulWidget {
 }
 
 class _PanelCenterHomeState extends State<PanelCenterHome> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         if (state is InitVisualModelState) {
+          context.read<HomeBloc>().add(InitHomeEvent());
           return const Text("ESTA Iniciado.....");
         }else if (state is LoadingVisualModelState){
             return const Text("ESTA Cargando.....");

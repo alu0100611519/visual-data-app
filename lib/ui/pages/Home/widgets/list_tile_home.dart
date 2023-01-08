@@ -4,7 +4,8 @@ import 'package:visual_data_app/domain/model/visual_model.dart';
 import '../../constant.dart';
 
 class ListTileHome extends StatefulWidget {
-  const ListTileHome({required Key key, required VisualModel visualModel}) : super(key: key);
+  final VisualModel visualModel;
+  const ListTileHome({required Key key, required this.visualModel}) : super(key: key);
 
   @override
   State<ListTileHome> createState() => _ListTileHomeState();
@@ -12,7 +13,8 @@ class ListTileHome extends StatefulWidget {
 
 class _ListTileHomeState extends State<ListTileHome> {
 
-  //Presentation presentation;
+  _ListTileHomeState();
+
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -33,13 +35,13 @@ class _ListTileHomeState extends State<ListTileHome> {
                 leading: IconButton(
                   onPressed: (){print("esto es leading");},
                   icon: const Icon(Icons.label),),
-                title: const Text(
-                  "Products Avaiable",
-                  style: TextStyle(color: Colors.white),
+                title: Text(
+                  widget.visualModel.name,
+                  style: const TextStyle(color: Colors.white),
                 ),
-                subtitle: const Text(
-                  "82% of the Products Avaiable.",
-                  style: TextStyle(color: Colors.white),
+                subtitle: Text(
+                  widget.visualModel.description,
+                  style: const TextStyle(color: Colors.white),
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -60,3 +62,4 @@ class _ListTileHomeState extends State<ListTileHome> {
         );
   }
 }
+

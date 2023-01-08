@@ -14,7 +14,7 @@ class InitVisualModelState extends HomeState {
   InitVisualModelState() : super([]);
 
   @override
-  String toString() => 'Init State';
+  String toString() => 'InitHomeEvent';
 }
 
 /// UnInitialized

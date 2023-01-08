@@ -55,10 +55,10 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                       ],
                       shape: BoxShape.circle,
                     ),
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       backgroundColor: Constants.yellowDak,
                       radius: 20,
-                      child: Image.asset("lib/image/mockImage.png"),
+                      child: Image(image: AssetImage("assets/image/avatar.png")),//Image.asset(),
                     ),
                   )
                 ],

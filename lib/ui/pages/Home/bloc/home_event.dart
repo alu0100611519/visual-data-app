@@ -14,6 +14,15 @@ abstract class HomeEvent {
       {HomeState currentState, HomeBloc bloc});
 }
 
+class InitHomeEvent extends HomeEvent{
+
+  @override
+  Stream<HomeState> applyAsync({HomeState? currentState, HomeBloc? bloc}) async* {
+    await Future.delayed(const Duration(seconds: 3));
+    yield LoadedVisualModelState(lista);
+
+  }
+}
 class UnHomeEvent extends HomeEvent {
   @override
   Stream<HomeState> applyAsync({HomeState? currentState, HomeBloc? bloc}) async* {
